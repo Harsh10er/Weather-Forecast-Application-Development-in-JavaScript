@@ -5,129 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap">
 </head>
-<body class="w-full h-screen bg-cover bg-center relative text-white font-[Poppins] font-semibold" style="background-image: url('assets/bg.jpg');">
-    <div class="absolute inset-0 bg-black/15 backdrop-blur-md"></div>
-
-    <main class="relative z-10 w-80 mx-auto mt-10 p-6 bg-black/20 backdrop-blur-xl rounded-xl shadow-lg">
-        <header class="relative mb-6">
-            <input type="text" placeholder="Search City" class="city-input w-full p-3 pr-12 bg-black/20 border border-white/50 outline-none text-white rounded-lg placeholder-white/75">
-            <button class="search-btn absolute right-3 top-1/2 transform -translate-y-1/2">
-                <span class="material-symbols-outlined text-white">search</span>
+<body class="bg-cover bg-center h-screen flex justify-center items-center" style="background-image: url('assets/bg.jpg');">
+    <div class="w-96 p-6 bg-white/20 backdrop-blur-md rounded-lg text-white shadow-lg">
+        <header class="flex gap-2 mb-6">
+            <input type="text" id="city-input" placeholder="Search City" class="flex-grow p-2 bg-white/20 rounded-lg outline-none text-black">
+            <button id="search-btn" class="bg-blue-500 p-2 rounded-lg">
+                <span class="material-symbols-outlined">search</span>
             </button>
         </header>
 
-        <section class="flex flex-col gap-6 weather-info">
-            <div class="flex justify-between items-center location-date-container">
-                <div class="flex items-center gap-2 location-container">
+        <section class="text-center">
+            <div class="flex justify-between items-center mb-4">
+                <div class="flex items-center gap-2">
                     <span class="material-symbols-outlined">location_on</span>
-                    <h4 class="text-lg country-txt">Jakarta</h4>
+                    <h4 id="city-name" class="font-semibold">Jakarta</h4>
                 </div>
-                <h5 class="text-sm opacity-80 current-date-txt">Wed, 07 Aug</h5>
+                <h5 id="current-date" class="text-sm">Wed, 07 Aug</h5>
             </div>
 
-            <div class="flex justify-between items-center weather-summary-container">
-                <img src="assets/weather/clouds.svg" alt="Weather Icon" class="w-24 h-24 weather-summary-img">
-                <div class="text-right weather-summary-info">
-                    <h1 class="text-3xl temp-txt">29°C</h1>
-                    <h3 class="text-lg opacity-80 condition-txt">Clouds</h3>
-                </div>
+            <div class="flex flex-col items-center mb-4">
+                <img id="weather-icon" src="assets/weather/clouds.svg" alt="Weather Icon" class="w-24">
+                <h1 id="temperature" class="text-4xl font-bold">29°C</h1>
+                <h3 id="weather-condition" class="text-lg">Clouds</h3>
             </div>
 
-            <div class="flex justify-between items-center">
-                <div class="flex items-center gap-3 condition">
+            <div class="flex justify-around text-sm">
+                <div class="flex items-center gap-2">
                     <span class="material-symbols-outlined">water_drop</span>
                     <div>
-                        <h5 class="text-sm opacity-80">Humidity</h5>
-                        <h5 class="text-base humidity-value-txt">55%</h5>
+                        <h5>Humidity</h5>
+                        <h5 id="humidity">55%</h5>
                     </div>
                 </div>
-                <div class="flex items-center gap-3 condition">
+                <div class="flex items-center gap-2">
                     <span class="material-symbols-outlined">air</span>
                     <div>
-                        <h5 class="text-sm opacity-80">Wind Speed</h5>
-                        <h5 class="text-base wind-value-txt">2 M/s</h5>
+                        <h5>Wind Speed</h5>
+                        <h5 id="wind-speed">2 m/s</h5>
                     </div>
                 </div>
             </div>
-
-            <section>
-                <h3 class="text-lg mb-3">5-Day Forecast</h3>
-                <div class="flex gap-4 overflow-x-auto pb-3 forecast-items-container">
-                    <div class="min-w-[70px] flex flex-col items-center bg-white/10 p-3 rounded-lg forecast-item">
-                        <h5 class="text-sm">05 Aug</h5>
-                        <img src="assets/weather/thunderstorm.svg" alt="Thunderstorm" class="w-9 h-9 forecast-item-img">
-                    </div>
-                    <div class="min-w-[70px] flex flex-col items-center bg-white/10 p-3 rounded-lg forecast-item">
-                        <h5 class="text-sm">06 Aug</h5>
-                        <img src="assets/weather/rain.svg" alt="Rain" class="w-9 h-9 forecast-item-img">
-                    </div>
-                    <div class="min-w-[70px] flex flex-col items-center bg-white/10 p-3 rounded-lg forecast-item">
-                        <h5 class="text-sm">07 Aug</h5>
-                        <img src="assets/weather/cloudy.svg" alt="Cloudy" class="w-9 h-9 forecast-item-img">
-                    </div>
-                    <div class="min-w-[70px] flex flex-col items-center bg-white/10 p-3 rounded-lg forecast-item">
-                        <h5 class="text-sm">08 Aug</h5>
-                        <img src="assets/weather/sunny.svg" alt="Sunny" class="w-9 h-9 forecast-item-img">
-                    </div>
-                    <div class="min-w-[70px] flex flex-col items-center bg-white/10 p-3 rounded-lg forecast-item">
-                        <h5 class="text-sm">09 Aug</h5>
-                        <img src="assets/weather/windy.svg" alt="Windy" class="w-9 h-9 forecast-item-img">
-                    </div>
-                </div>
-            </section>
         </section>
-    </main>
+
+        <section class="mt-6">
+            <h3 class="text-lg font-semibold mb-2">5-Day Forecast</h3>
+            <div id="forecast-container" class="flex overflow-x-auto space-x-4 p-2 scrollbar-thin scrollbar-thumb-gray-400"></div>
+        </section>
+    </div>
 
     <script>
-        const cityInput = document.querySelector(".city-input");
-        const searchBtn = document.querySelector(".search-btn");
         const apiKey = "9a2eadbfa7fc0dff84bbffb58b7c3410";
 
-        searchBtn.addEventListener("click", () => {
-            if (cityInput.value.trim() !== "") {
-                updateWeatherInfo(cityInput.value);
-                cityInput.value = "";
-                cityInput.blur();
+        document.getElementById("search-btn").addEventListener("click", () => {
+            const city = document.getElementById("city-input").value.trim();
+            if (city) {
+                updateWeatherInfo(city);
+                document.getElementById("city-input").value = "";
             }
         });
 
-        cityInput.addEventListener("keydown", (event) => {
-            if (event.key.toLowerCase() === "enter" && cityInput.value.trim() !== "") {
-                updateWeatherInfo(cityInput.value);
-                cityInput.value = "";
-                cityInput.blur();
+        document.getElementById("city-input").addEventListener("keydown", (event) => {
+            if (event.key.toLowerCase() === "enter") {
+                const city = document.getElementById("city-input").value.trim();
+                if (city) {
+                    updateWeatherInfo(city);
+                    document.getElementById("city-input").value = "";
+                }
             }
         });
 
-        async function getFetchData(city) {
-            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-
+        async function fetchWeatherData(city) {
+            const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
             try {
-                const response = await fetch(apiUrl);
+                const response = await fetch(url);
                 if (!response.ok) throw new Error("City not found");
-
-                const data = await response.json();
-                return data;
+                return await response.json();
             } catch (error) {
-                console.error("Error fetching data:", error);
-                alert("Failed to fetch weather data. Please try again.");
+                console.error(error);
+                alert("City not found. Please try again.");
+            }
+        }
+
+        async function fetchForecastData(city) {
+            const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error("City not found");
+                return await response.json();
+            } catch (error) {
+                console.error(error);
             }
         }
 
         async function updateWeatherInfo(city) {
-            const weatherData = await getFetchData(city);
-            if (!weatherData) return;
+            const data = await fetchWeatherData(city);
+            if (!data) return;
 
-            document.querySelector(".country-txt").textContent = weatherData.name;
-            document.querySelector(".temp-txt").textContent = `${Math.round(weatherData.main.temp)} °C`;
-            document.querySelector(".condition-txt").textContent = weatherData.weather[0].main;
-            document.querySelector(".humidity-value-txt").textContent = `${weatherData.main.humidity}%`;
-            document.querySelector(".wind-value-txt").textContent = `${weatherData.wind.speed} m/s`;
+            document.getElementById("city-name").textContent = data.name;
+            document.getElementById("temperature").textContent = `${Math.round(data.main.temp)}°C`;
+            document.getElementById("weather-condition").textContent = data.weather[0].main;
+            document.getElementById("humidity").textContent = `${data.main.humidity}%`;
+            document.getElementById("wind-speed").textContent = `${data.wind.speed} m/s`;
+            document.getElementById("weather-icon").src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
 
-            const weatherIcon = weatherData.weather[0].icon;
-            document.querySelector(".weather-summary-img").src = `https://openweathermap.org/img/wn/${weatherIcon}@2x.png`;
+            updateForecast(city);
+        }
+
+        async function updateForecast(city) {
+            const data = await fetchForecastData(city);
+            if (!data) return;
+
+            const dailyForecast = {};
+            data.list.forEach(item => {
+                const date = item.dt_txt.split(" ")[0];
+                if (!dailyForecast[date]) dailyForecast[date] = item;
+            });
+
+            const forecastContainer = document.getElementById("forecast-container");
+            forecastContainer.innerHTML = "";
+
+            Object.values(dailyForecast).slice(0, 5).forEach(item => {
+                const forecastElement = document.createElement("div");
+                forecastElement.className = "bg-white/20 p-4 rounded-lg flex flex-col items-center w-20 text-white";
+
+                const date = document.createElement("p");
+                date.textContent = new Date(item.dt_txt).toLocaleDateString("en-US", { weekday: "short" });
+                date.className = "text-sm";
+
+                const icon = document.createElement("img");
+                icon.src = `https://openweathermap.org/img/wn/${item.weather[0].icon}.png`;
+                icon.className = "w-10";
+
+                const temp = document.createElement("p");
+                temp.textContent = `${Math.round(item.main.temp)}°C`;
+                temp.className = "text-sm";
+
+                forecastElement.appendChild(date);
+                forecastElement.appendChild(icon);
+                forecastElement.appendChild(temp);
+
+                forecastContainer.appendChild(forecastElement);
+            });
         }
     </script>
 </body>
